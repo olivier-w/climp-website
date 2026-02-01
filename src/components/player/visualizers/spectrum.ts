@@ -17,6 +17,7 @@ export function renderSpectrum(
   const binsPerCol = Math.floor(binCount / cols);
 
   ctx.clearRect(0, 0, width, height);
+  ctx.font = '14px "JetBrains Mono", monospace';
 
   for (let col = 0; col < cols; col++) {
     // Average bins for this column

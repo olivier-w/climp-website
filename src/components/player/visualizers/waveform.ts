@@ -43,9 +43,9 @@ export function renderWaveform(
   ctx.closePath();
 
   const gradient = ctx.createLinearGradient(0, 0, 0, height);
-  gradient.addColorStop(0, "rgba(51, 255, 102, 0.15)");
-  gradient.addColorStop(0.5, "rgba(51, 255, 102, 0.03)");
-  gradient.addColorStop(1, "rgba(51, 255, 102, 0.15)");
+  gradient.addColorStop(0, "rgba(224, 224, 224, 0.15)");
+  gradient.addColorStop(0.5, "rgba(224, 224, 224, 0.04)");
+  gradient.addColorStop(1, "rgba(224, 224, 224, 0.15)");
   ctx.fillStyle = gradient;
   ctx.fill();
 
@@ -67,15 +67,15 @@ export function renderWaveform(
   }
 
   // Outer glow
-  ctx.shadowColor = "rgba(51, 255, 102, 0.6)";
-  ctx.shadowBlur = 12;
-  ctx.strokeStyle = "rgba(51, 255, 102, 0.4)";
+  ctx.shadowColor = "rgba(224, 224, 224, 0.5)";
+  ctx.shadowBlur = 10;
+  ctx.strokeStyle = "rgba(224, 224, 224, 0.4)";
   ctx.lineWidth = 3;
   ctx.stroke();
 
   // Inner bright line
   ctx.shadowBlur = 4;
-  ctx.strokeStyle = "#33ff66";
+  ctx.strokeStyle = "#e0e0e0";
   ctx.lineWidth = 1.5;
   ctx.stroke();
 
@@ -87,7 +87,7 @@ export function renderWaveform(
   ctx.beginPath();
   ctx.moveTo(0, midY);
   ctx.lineTo(width, midY);
-  ctx.strokeStyle = "rgba(51, 255, 102, 0.08)";
+  ctx.strokeStyle = "rgba(224, 224, 224, 0.06)";
   ctx.lineWidth = 1;
   ctx.stroke();
 }

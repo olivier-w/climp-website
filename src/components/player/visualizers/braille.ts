@@ -24,6 +24,7 @@ export function renderBraille(
   const binsPerDotCol = Math.max(1, Math.floor(data.length / dotCols));
 
   ctx.clearRect(0, 0, width, height);
+  ctx.font = '14px "JetBrains Mono", monospace';
 
   // Build dot grid
   const grid: boolean[][] = Array.from({ length: dotRows }, () =>

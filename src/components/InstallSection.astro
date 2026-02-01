@@ -45,24 +45,29 @@ const tabs = [
     ))}
   </div>
 
-  {/* Tab panels */}
-  {tabs.map((tab, i) => (
-    <div
-      class:list={["tab-panel", i !== 0 && "hidden"]}
-      data-panel={tab.id}
-      role="tabpanel"
-    >
-      <div class="relative bg-[var(--color-bg)] border border-[var(--color-border)] border-t-0 rounded-b-lg">
-        <pre class="px-4 py-3 text-xs text-[var(--color-text-muted)] overflow-x-auto"><code>{tab.code}</code></pre>
-        <button
-          class="copy-btn absolute top-2 right-2 text-xs text-[var(--color-text-faint)] hover:text-[var(--color-accent)] transition-colors px-2 py-0.5"
-          data-code={tab.code}
-        >
-          copy
-        </button>
+  {/* Tab panels — grid overlay so tallest panel sets the height */}
+  <div class="grid">
+    {tabs.map((tab, i) => (
+      <div
+        class:list={[
+          "tab-panel col-start-1 row-start-1 transition-opacity duration-150",
+          i === 0 ? "opacity-100" : "opacity-0 pointer-events-none",
+        ]}
+        data-panel={tab.id}
+        role="tabpanel"
+      >
+        <div class="relative bg-[var(--color-bg)] border border-[var(--color-border)] border-t-0 rounded-b-lg">
+          <pre class="px-4 py-3 text-xs text-[var(--color-text-muted)] overflow-x-auto"><code>{tab.code}</code></pre>
+          <button
+            class="copy-btn absolute top-2 right-2 text-xs text-[var(--color-text-faint)] hover:text-[var(--color-accent)] transition-colors px-2 py-0.5"
+            data-code={tab.code}
+          >
+            copy
+          </button>
+        </div>
       </div>
-    </div>
-  ))}
+    ))}
+  </div>
 </div>
 
 <script>
@@ -87,7 +92,10 @@ const tabs = [
         });
 
         panels.forEach((p) => {
-          p.classList.toggle("hidden", p.dataset.panel !== tabId);
+          const isActive = p.dataset.panel === tabId;
+          p.classList.toggle("opacity-100", isActive);
+          p.classList.toggle("opacity-0", !isActive);
+          p.classList.toggle("pointer-events-none", !isActive);
         });
       });
     });

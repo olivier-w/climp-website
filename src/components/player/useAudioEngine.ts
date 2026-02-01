@@ -10,7 +10,7 @@ export function useAudioEngine(src: string): AudioState & AudioControls {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [volume, setVolume] = useState(0.6);
+  const [volume, setVolume] = useState(0.2);
   const [repeat, setRepeat] = useState(false);
   const [analyser, setAnalyser] = useState<AnalyserNode | null>(null);
 
@@ -18,7 +18,7 @@ export function useAudioEngine(src: string): AudioState & AudioControls {
     const audio = new Audio(src);
     audio.preload = "metadata";
     audio.crossOrigin = "anonymous";
-    audio.volume = 0.6;
+    audio.volume = 0.2;
     audioRef.current = audio;
 
     audio.addEventListener("loadedmetadata", () => {
@@ -79,7 +79,7 @@ export function useAudioEngine(src: string): AudioState & AudioControls {
     if (audio.paused) {
       audio.play().then(
         () => setIsPlaying(true),
-        () => {} // audio source not ready
+        () => {}, // audio source not ready
       );
     } else {
       audio.pause();
@@ -92,7 +92,7 @@ export function useAudioEngine(src: string): AudioState & AudioControls {
     if (!audio) return;
     audio.currentTime = Math.max(
       0,
-      Math.min(audio.duration, audio.currentTime + delta)
+      Math.min(audio.duration, audio.currentTime + delta),
     );
   }, []);
 

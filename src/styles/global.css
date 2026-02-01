@@ -11,14 +11,14 @@
 @theme {
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono",
     Menlo, Consolas, "Liberation Mono", monospace;
-  --color-bg: #0a100a;
-  --color-surface: #0f170f;
-  --color-border: #1a2e1a;
-  --color-text: #33ff66;
-  --color-text-muted: #22bb44;
-  --color-text-dim: #1a8833;
-  --color-text-faint: #115522;
-  --color-accent: #66ff99;
+  --color-bg: #141414;
+  --color-surface: #1e1e1e;
+  --color-border: #2a2a2a;
+  --color-text: #e0e0e0;
+  --color-text-muted: #a0a0a0;
+  --color-text-dim: #707070;
+  --color-text-faint: #505050;
+  --color-accent: #ffffff;
 }
 
 html {
@@ -33,66 +33,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Scanline overlay */
-.crt-scanlines::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    to bottom,
-    transparent 0px,
-    transparent 2px,
-    rgba(0, 0, 0, 0.15) 2px,
-    rgba(0, 0, 0, 0.15) 4px
-  );
-  z-index: 9999;
-}
-
-/* Phosphor glow */
-.crt-scanlines {
-  text-shadow: 0 0 8px rgba(51, 255, 102, 0.4);
-}
-
-/* Vignette */
-.crt-vignette::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  box-shadow: inset 0 0 150px 60px rgba(0, 0, 0, 0.9);
-  z-index: 9998;
-}
-
-/* CRT Curvature - uses border-radius with scale to create barrel distortion */
-body:has(.crt-curvature) {
-  overflow: hidden;
-  height: 100dvh;
-  background: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.crt-curvature {
-  overflow-y: auto;
-  width: 100%;
-  height: 100%;
-  background: var(--color-bg);
-  border-radius: 50% / 12%;
-  transform: scale(1.05, 1.02);
-  box-shadow:
-    0 0 80px 10px rgba(51, 255, 102, 0.05) inset,
-    0 0 2px 1px rgba(51, 255, 102, 0.15);
-  border: 2px solid rgba(51, 255, 102, 0.08);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .crt-scanlines::after,
-  .crt-vignette::before {
-    display: none;
-  }
-}
 
 /* Terminal window frame */
 .terminal-window {
@@ -100,6 +40,10 @@ body:has(.crt-curvature) {
   border-radius: 8px;
   overflow: hidden;
   background: var(--color-surface);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 4px 8px rgba(0, 0, 0, 0.2),
+    0 12px 32px rgba(0, 0, 0, 0.25);
 }
 
 .terminal-titlebar {
@@ -132,7 +76,7 @@ body:has(.crt-curvature) {
 }
 
 .terminal-dot--maximize {
-  background: #28c840;
+  background: #28c83f;
 }
 
 .terminal-title {

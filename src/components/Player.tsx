@@ -51,9 +51,14 @@ export default function Player() {
       onClick={handleInteraction}
     >
 
-      {/* Song title — bold like real climp */}
-      <div className="mb-6 text-base font-bold text-[var(--color-text)]">
-        Ghost (Kerrigan's Anthem)
+      {/* Song title + artist — like real climp */}
+      <div className="mb-6">
+        <div className="text-base font-bold text-[var(--color-text)]">
+          Ghost (Kerrigan's Anthem)
+        </div>
+        <div className="text-sm text-[var(--color-text-muted)]">
+          Maduk ft Veela
+        </div>
       </div>
 
       {/* Visualizer — compact */}

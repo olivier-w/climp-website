@@ -50,6 +50,7 @@ export function renderMatrix(
   lastTime = now;
 
   ctx.clearRect(0, 0, width, height);
+  ctx.font = '14px "JetBrains Mono", monospace';
 
   for (let col = 0; col < cols; col++) {
     const column = columns[col];
@@ -96,8 +97,8 @@ export function renderMatrix(
           ctx.fillStyle = "#ffffff";
         }
       } else {
-        const g = Math.floor(40 + fade * 120 + colEnergy * 60);
-        ctx.fillStyle = `rgb(0,${g},0)`;
+        const v = Math.floor(40 + fade * 120 + colEnergy * 60);
+        ctx.fillStyle = `rgb(${v},${v},${v})`;
       }
 
       ctx.fillText(char, col * charW, row * charH + charH);

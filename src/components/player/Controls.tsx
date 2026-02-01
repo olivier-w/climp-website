@@ -11,7 +11,7 @@ export function Controls({ isPlaying, repeat, volume }: Props) {
 
   return (
     <div className="flex items-center gap-4 text-sm select-none">
-      <span className="text-[var(--color-text)]">{icon}</span>
+      <span className={`text-[var(--color-text)] ${isPlaying ? "" : "text-[0.65em] leading-none"}`}>{icon}</span>
       <span className="text-[var(--color-text-muted)]">{status}</span>
       {repeat && (
         <span className="text-[var(--color-text-dim)]">[repeat]</span>

@@ -18,7 +18,7 @@ const {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="theme-color" content="#141414" />
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -40,15 +40,13 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
-  <body class="crt-scanlines crt-vignette">
-    <div class="crt-curvature">
-      <a
-        href="#install"
-        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-accent focus:text-bg focus:px-3 focus:py-1 focus:rounded"
-      >
-        Skip to install
-      </a>
-      <slot />
-    </div>
+  <body>
+    <a
+      href="#install"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-accent focus:text-bg focus:px-3 focus:py-1 focus:rounded"
+    >
+      Skip to install
+    </a>
+    <slot />
   </body>
 </html>
