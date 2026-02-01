@@ -84,12 +84,12 @@ export default function Player() {
       </div>
 
       {/* Keybinds help — matches real climp, hidden on mobile */}
-      <div className="hidden sm:block text-sm text-[var(--color-text-dim)] select-none">
-        <span>space</span> pause{"  "}
-        <span>←/→</span> seek{"  "}
-        <span>↑/↓</span> volume{"  "}
-        <span>v</span> viz{"  "}
-        <span>r</span> repeat
+      <div className="hidden sm:flex gap-4 text-sm text-[var(--color-text-dim)] select-none">
+        <span><span>space</span> pause</span>
+        <span><span>←/→</span> seek</span>
+        <span><span>↑/↓</span> volume</span>
+        <span><span>v</span> viz</span>
+        <span><span>r</span> repeat</span>
       </div>
 
       {/* Play state for screen readers */}

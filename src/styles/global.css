@@ -142,3 +142,144 @@ body {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
+
+/* Like button */
+.like-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.25rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 28px;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: color 150ms cubic-bezier(0.32, 0.72, 0, 1),
+              border-color 150ms cubic-bezier(0.32, 0.72, 0, 1),
+              transform 150ms cubic-bezier(0.32, 0.72, 0, 1);
+  user-select: none;
+}
+
+.like-button:hover {
+  color: var(--color-text);
+  border-color: var(--color-text-dim);
+}
+
+.like-button[data-liked]:hover {
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.like-button:active {
+  transform: scale(0.97);
+}
+
+/* Heart wrapper — contains heart + particles */
+.like-button-heart-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.like-button-heart {
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: color 200ms cubic-bezier(0.32, 0.72, 0, 1),
+              filter 200ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Liked state — red heart with glow */
+.like-button[data-liked] .like-button-heart {
+  color: #ef4444;
+  filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.5));
+}
+
+.like-button[data-liked] {
+  color: var(--color-text);
+}
+
+/* Heart pop — 250ms with custom overshoot curve (marketing site exception allows expressiveness) */
+.like-button[data-animating] .like-button-heart {
+  animation: heart-pop 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.like-button-count {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes heart-pop {
+  0%   { transform: scale(1); }
+  15%  { transform: scale(1.35); }
+  40%  { transform: scale(0.95); }
+  65%  { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+/* Particle burst — 6 dots that fly outward and fade (transform + opacity only) */
+.like-particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ef4444;
+  pointer-events: none;
+  opacity: 0;
+  animation: particle-burst 600ms cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  --angle: calc(var(--i) * 60deg);
+}
+
+.like-particle:nth-child(odd) {
+  width: 4px;
+  height: 4px;
+  background: #f97316;
+}
+
+.like-particle:nth-child(3n) {
+  background: #fbbf24;
+}
+
+@keyframes particle-burst {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(0) scale(0.95);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-20px) scale(0.95);
+  }
+}
+
+/* Reduced motion — opacity-only fallback, don't remove all animation */
+@media (prefers-reduced-motion: reduce) {
+  .like-button {
+    transition: color 150ms ease, border-color 150ms ease;
+  }
+
+  .like-button:active {
+    transform: none;
+  }
+
+  .like-button[data-animating] .like-button-heart {
+    animation: heart-fade 200ms ease-out;
+  }
+
+  .like-particle {
+    animation: none;
+    display: none;
+  }
+
+  @keyframes heart-fade {
+    0%   { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
+}

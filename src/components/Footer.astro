@@ -1,7 +1,8 @@
 ---
+import LikeButton from "./LikeButton";
 ---
 
-<footer class="py-8 px-6 text-center text-sm text-[var(--color-text-faint)]">
+<footer class="py-8 px-6 text-center text-sm text-[var(--color-text-faint)] flex flex-col items-center gap-6">
   <p>
     experiment by <a
       href="https://olivier.me"
@@ -10,4 +11,5 @@
       rel="noopener noreferrer"
     >olivier</a>
   </p>
+  <LikeButton client:visible />
 </footer>
