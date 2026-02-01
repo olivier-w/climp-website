@@ -37,11 +37,6 @@ export default function Player() {
     engine.togglePlay();
   }
 
-  // Detect touch device
-  const isTouch =
-    typeof window !== "undefined" &&
-    window.matchMedia("(pointer: coarse)").matches;
-
   return (
     <div
       ref={containerRef}
@@ -80,7 +75,7 @@ export default function Player() {
       </div>
 
       {/* Controls */}
-      <div className="mb-4">
+      <div className="mb-0 sm:mb-4">
         <Controls
           isPlaying={engine.isPlaying}
           repeat={engine.repeat}
@@ -88,19 +83,13 @@ export default function Player() {
         />
       </div>
 
-      {/* Keybinds help — matches real climp */}
-      <div className="text-sm text-[var(--color-text-dim)] select-none">
-        {isTouch ? (
-          "tap play/pause · swipe seek · tap vol"
-        ) : (
-          <>
-            <span>space</span> pause{"  "}
-            <span>←/→</span> seek{"  "}
-            <span>↑/↓</span> volume{"  "}
-            <span>v</span> viz{"  "}
-            <span>r</span> repeat
-          </>
-        )}
+      {/* Keybinds help — matches real climp, hidden on mobile */}
+      <div className="hidden sm:block text-sm text-[var(--color-text-dim)] select-none">
+        <span>space</span> pause{"  "}
+        <span>←/→</span> seek{"  "}
+        <span>↑/↓</span> volume{"  "}
+        <span>v</span> viz{"  "}
+        <span>r</span> repeat
       </div>
 
       {/* Play state for screen readers */}

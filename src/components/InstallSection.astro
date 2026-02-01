@@ -46,17 +46,17 @@ const tabs = [
   </div>
 
   {/* Tab panels — grid overlay so tallest panel sets the height */}
-  <div class="grid">
+  <div class="grid min-w-0">
     {tabs.map((tab, i) => (
       <div
         class:list={[
-          "tab-panel col-start-1 row-start-1 transition-opacity duration-150",
+          "tab-panel col-start-1 row-start-1 transition-opacity duration-150 min-w-0",
           i === 0 ? "opacity-100" : "opacity-0 pointer-events-none",
         ]}
         data-panel={tab.id}
         role="tabpanel"
       >
-        <div class="relative bg-[var(--color-bg)] border border-[var(--color-border)] border-t-0 rounded-b-lg">
+        <div class="relative bg-[var(--color-bg)] border border-[var(--color-border)] border-t-0 rounded-b-lg overflow-hidden">
           <pre class="px-4 py-3 text-xs text-[var(--color-text-muted)] overflow-x-auto"><code>{tab.code}</code></pre>
           <button
             class="copy-btn absolute top-2 right-2 text-xs text-[var(--color-text-faint)] hover:text-[var(--color-accent)] transition-colors px-2 py-0.5"
