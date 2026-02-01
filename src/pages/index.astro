@@ -1,0 +1,54 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Player from "../components/Player";
+import InstallSection from "../components/InstallSection.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout>
+  <main class="flex flex-col items-center px-6 py-12 gap-10">
+    {/* Tagline */}
+    <div class="w-full max-w-[540px] text-center space-y-2">
+      <h1 class="text-lg">
+        <a
+          href="https://github.com/olivier-w/climp"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="climp-title"
+        >climp</a>
+      </h1>
+      <p class="text-sm text-[var(--color-text-muted)]">
+        the music player nobody asked for.
+      </p>
+    </div>
+
+    {/* Player in terminal frame */}
+    <div class="w-full max-w-[600px]">
+      <div class="terminal-window">
+        <div class="terminal-titlebar">
+          <div class="terminal-dots">
+            <span class="terminal-dot terminal-dot--close"></span>
+            <span class="terminal-dot terminal-dot--minimize"></span>
+            <span class="terminal-dot terminal-dot--maximize"></span>
+          </div>
+          <span class="terminal-title">climp</span>
+          <div class="terminal-dots invisible">
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+          </div>
+        </div>
+        <div class="terminal-body">
+          <Player client:load />
+        </div>
+      </div>
+    </div>
+
+    {/* Install options */}
+    <div class="w-full max-w-[540px]">
+      <InstallSection />
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
