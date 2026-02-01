@@ -1,0 +1,78 @@
+---
+const demos = [
+  {
+    label: "file browser",
+    description: "run climp with no arguments to browse and play local files.",
+    gif: "/demo/browser.gif",
+  },
+  {
+    label: "url playback",
+    description: "play from a URL (YouTube, SoundCloud, etc). press s to save as mp3.",
+    gif: "/demo/url-fixed.gif",
+  },
+  {
+    label: "visualizer",
+    description: "press v to cycle through visualizers.",
+    gif: "/demo/visualizer.gif",
+  },
+];
+
+const keybindings = [
+  ["space", "pause / play"],
+  ["left / h", "seek -5s"],
+  ["right / l", "seek +5s"],
+  ["up / k", "volume +5%"],
+  ["down / j", "volume -5%"],
+  ["v", "cycle visualizer"],
+  ["r", "toggle repeat"],
+  ["s", "save as mp3"],
+  ["q / esc", "quit"],
+];
+---
+
+<div class="space-y-6">
+  {/* Usage commands */}
+  <div>
+    <h2 class="text-xs text-[var(--color-accent)] mb-2">usage</h2>
+    <div class="bg-[var(--color-bg)] border border-[var(--color-border)] rounded-lg overflow-hidden">
+      <pre class="px-4 py-3 text-xs text-[var(--color-text-muted)] overflow-x-auto"><code>climp                 # open interactive file browser
+climp song.mp3        # play a local file
+climp &lt;url&gt;           # play from URL (YouTube, etc)</code></pre>
+    </div>
+  </div>
+
+  {/* Demos */}
+  <div class="space-y-4">
+    {demos.map((demo) => (
+      <div>
+        <h3 class="text-xs text-[var(--color-accent)] mb-1">{demo.label}</h3>
+        <p class="text-xs text-[var(--color-text-faint)] mb-2">{demo.description}</p>
+        <div class="border border-[var(--color-border)] rounded-lg overflow-hidden">
+          <img
+            src={demo.gif}
+            alt={`${demo.label} demo`}
+            class="w-full block"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    ))}
+  </div>
+
+  {/* Keybindings */}
+  <div>
+    <h2 class="text-xs text-[var(--color-accent)] mb-2">keybindings</h2>
+    <div class="bg-[var(--color-bg)] border border-[var(--color-border)] rounded-lg overflow-hidden">
+      <table class="w-full text-xs">
+        <tbody>
+          {keybindings.map(([key, action]) => (
+            <tr class="border-b border-[var(--color-border)] last:border-b-0">
+              <td class="px-4 py-1.5 text-[var(--color-text)] whitespace-nowrap w-1/3">{key}</td>
+              <td class="px-4 py-1.5 text-[var(--color-text-muted)]">{action}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
