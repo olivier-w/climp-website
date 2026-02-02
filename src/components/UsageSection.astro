@@ -7,13 +7,18 @@ const demos = [
   },
   {
     label: "url playback",
-    description: "play from a URL (YouTube, SoundCloud, etc). press s to save as mp3.",
+    description: "play from a URL (YouTube, SoundCloud, etc). requires yt-dlp. press s to save as mp3.",
     gif: "/demo/url-fixed.gif",
   },
   {
     label: "visualizer",
-    description: "press v to cycle through visualizers.",
+    description: "press v to cycle through visualizers: vu, spectrum, waveform, braille, dense, matrix, hatching.",
     gif: "/demo/visualizer.gif",
+  },
+  {
+    label: "playlists",
+    description: "local directories and YouTube playlists. use n/p to skip tracks, j/k to scroll the queue.",
+    gif: "/demo/playlist.gif",
   },
 ];
 
@@ -24,9 +29,13 @@ const keybindings = [
   ["up / k", "volume +5%"],
   ["down / j", "volume -5%"],
   ["v", "cycle visualizer"],
-  ["r", "toggle repeat"],
+  ["r", "toggle repeat (off / song / playlist)"],
+  ["n", "next track"],
+  ["N / p", "previous track"],
+  ["enter", "play selected track"],
+  ["del / backspace", "remove track from queue"],
   ["s", "save as mp3"],
-  ["q / esc", "quit"],
+  ["q / esc / ctrl+c", "quit"],
 ];
 ---
 
@@ -36,8 +45,9 @@ const keybindings = [
     <h2 class="text-xs text-[var(--color-accent)] mb-2">usage</h2>
     <div class="bg-[var(--color-bg)] border border-[var(--color-border)] rounded-lg overflow-hidden">
       <pre class="px-4 py-3 text-xs text-[var(--color-text-muted)] overflow-x-auto"><code>climp                 # open interactive file browser
-climp song.mp3        # play a local file
-climp &lt;url&gt;           # play from URL (YouTube, etc)</code></pre>
+climp song.mp3        # play a local file (+ directory playlist)
+climp &lt;url&gt;           # play from URL (YouTube, etc)
+climp &lt;playlist-url&gt;  # play a YouTube playlist</code></pre>
     </div>
   </div>
 
