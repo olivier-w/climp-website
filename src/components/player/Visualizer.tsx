@@ -25,6 +25,7 @@ export function Visualizer({ analyser, mode, isPlaying }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rafRef = useRef<number>(0);
   const lastFrameRef = useRef<number>(0);
+  const metricsRef = useRef({ cssW: 0, cssH: 0, charW: 0, charH: 18 });
 
   const draw = useCallback(
     (timestamp: number) => {
@@ -39,15 +40,7 @@ export function Visualizer({ analyser, mode, isPlaying }: Props) {
       const ctx = canvas.getContext("2d");
       if (!ctx) return;
 
-      const dpr = window.devicePixelRatio || 1;
-      const cssW = canvas.width / dpr;
-      const cssH = canvas.height / dpr;
-
-      // Measure char dimensions at CSS scale
-      ctx.font = '14px "JetBrains Mono", monospace';
-      const metrics = ctx.measureText("█");
-      const charW = metrics.width;
-      const charH = 18;
+      const { cssW, cssH, charW, charH } = metricsRef.current;
 
       if (mode === "off") {
         ctx.clearRect(0, 0, cssW, cssH);
@@ -70,7 +63,12 @@ export function Visualizer({ analyser, mode, isPlaying }: Props) {
         canvas.width = width * dpr;
         canvas.height = height * dpr;
         const ctx = canvas.getContext("2d");
-        if (ctx) ctx.scale(dpr, dpr);
+        if (ctx) {
+          ctx.scale(dpr, dpr);
+          ctx.font = '14px "JetBrains Mono", monospace';
+          const charW = ctx.measureText("█").width;
+          metricsRef.current = { cssW: width, cssH: height, charW, charH: 18 };
+        }
       }
     });
     resizeObserver.observe(canvas);
@@ -87,39 +85,10 @@ export function Visualizer({ analyser, mode, isPlaying }: Props) {
     return () => cancelAnimationFrame(rafRef.current);
   }, [isPlaying, analyser, draw]);
 
-  // Clear canvas when visualizer is turned off
-  useEffect(() => {
-    if (mode === "off") {
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-      const ctx = canvas.getContext("2d");
-      if (ctx) {
-        const dpr = window.devicePixelRatio || 1;
-        ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
-      }
-    }
-  }, [mode]);
-
-  // Check prefers-reduced-motion
-  const prefersReducedMotion =
+  const prefersReducedMotion = useRef(
     typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  if (prefersReducedMotion) {
-    return (
-      <div
-        className="w-full overflow-hidden transition-[height,opacity] duration-300 ease-in-out"
-        style={{
-          height: mode === "off" ? 0 : "7.2rem",
-          opacity: mode === "off" ? 0 : 1,
-        }}
-      >
-        <div className="w-full h-[7.2rem] flex items-center justify-center text-[var(--color-text-faint)] text-sm">
-          [ visualizer paused — reduced motion ]
-        </div>
-      </div>
-    );
-  }
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
 
   return (
     <div
@@ -129,11 +98,17 @@ export function Visualizer({ analyser, mode, isPlaying }: Props) {
         opacity: mode === "off" ? 0 : 1,
       }}
     >
-      <canvas
-        ref={canvasRef}
-        className="w-full h-[7.2rem] block"
-        style={{ imageRendering: "pixelated" }}
-      />
+      {prefersReducedMotion.current ? (
+        <div className="w-full h-[7.2rem] flex items-center justify-center text-[var(--color-text-faint)] text-sm">
+          [ visualizer paused — reduced motion ]
+        </div>
+      ) : (
+        <canvas
+          ref={canvasRef}
+          className="w-full h-[7.2rem] block"
+          style={{ imageRendering: "pixelated" }}
+        />
+      )}
     </div>
   );
 }

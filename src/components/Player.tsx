@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import type { VisualizerMode } from "./player/types";
 import { useAudioEngine } from "./player/useAudioEngine";
 import { useKeyBindings } from "./player/useKeyBindings";
@@ -14,10 +14,21 @@ export default function Player() {
 
   const engine = useAudioEngine("/audio/Maduk ft Veela - Ghost (Kerrigan's Anthem).mp3");
 
+  const VISUALIZER_MODES: VisualizerMode[] = ["off", "spectrum", "waveform", "braille", "matrix"];
+
+  const toggleVisualizer = useCallback(() => {
+    setVisualizerMode((prev) => {
+      const idx = VISUALIZER_MODES.indexOf(prev);
+      return VISUALIZER_MODES[(idx + 1) % VISUALIZER_MODES.length];
+    });
+  }, []);
+
   useKeyBindings({
     togglePlay: engine.togglePlay,
     seek: engine.seek,
     adjustVolume: engine.adjustVolume,
+    toggleVisualizer,
+    toggleRepeat: engine.toggleRepeat,
     isVisible,
   });
 
@@ -33,17 +44,13 @@ export default function Player() {
     return () => obs.disconnect();
   }, []);
 
-  function handleInteraction() {
-    engine.togglePlay();
-  }
-
   return (
     <div
       ref={containerRef}
       role="application"
       aria-label="climp audio player demo"
       className="w-full max-w-[540px] relative cursor-pointer"
-      onClick={handleInteraction}
+      onClick={engine.togglePlay}
     >
 
       {/* Song title + artist — like real climp */}

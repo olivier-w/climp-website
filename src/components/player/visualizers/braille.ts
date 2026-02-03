@@ -4,6 +4,9 @@
 //                 2 5
 //                 6 7
 const DOT_OFFSETS = [0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80];
+const GRAY = Array.from({ length: 256 }, (_, i) => `rgb(${i},${i},${i})`);
+const POPCOUNT = new Uint8Array(256);
+for (let i = 1; i < 256; i++) POPCOUNT[i] = POPCOUNT[i >> 1] + (i & 1);
 
 export function renderBraille(
   analyser: AnalyserNode,
@@ -83,14 +86,13 @@ export function renderBraille(
       if (code === 0x2800) continue;
 
       const char = String.fromCharCode(code);
-      const dotCount = (code - 0x2800).toString(2).split("1").length - 1;
+      const dotCount = POPCOUNT[code - 0x2800];
       const intensity = dotCount / 8;
 
       if (intensity > 0.7) {
         ctx.fillStyle = "#f97316";
       } else {
-        const gray = Math.floor(80 + intensity * 140);
-        ctx.fillStyle = `rgb(${gray},${gray},${gray})`;
+        ctx.fillStyle = GRAY[Math.floor(80 + intensity * 140)];
       }
 
       ctx.fillText(char, col * charW, row * charH + charH);

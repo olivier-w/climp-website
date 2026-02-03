@@ -1,10 +1,12 @@
+import { memo } from "react";
+
 interface Props {
   isPlaying: boolean;
   repeat: boolean;
   volume: number;
 }
 
-export function Controls({ isPlaying, repeat, volume }: Props) {
+export const Controls = memo(function Controls({ isPlaying, repeat, volume }: Props) {
   const icon = isPlaying ? "▶" : "▌▌";
   const status = isPlaying ? "playing" : "paused";
   const vol = Math.round(volume * 100);
@@ -19,4 +21,4 @@ export function Controls({ isPlaying, repeat, volume }: Props) {
       <span className="ml-auto text-[var(--color-text-dim)]">vol {vol}%</span>
     </div>
   );
-}
+});

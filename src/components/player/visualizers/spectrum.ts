@@ -1,4 +1,5 @@
 const BLOCKS = "█▇▆▅▄▃▂▁ ";
+const GRAY = Array.from({ length: 256 }, (_, i) => `rgb(${i},${i},${i})`);
 
 export function renderSpectrum(
   analyser: AnalyserNode,
@@ -46,8 +47,7 @@ export function renderSpectrum(
       if (isPeak) {
         ctx.fillStyle = "#f97316";
       } else {
-        const gray = Math.floor(80 + intensity * 140);
-        ctx.fillStyle = `rgb(${gray},${gray},${gray})`;
+        ctx.fillStyle = GRAY[Math.floor(80 + intensity * 140)];
       }
 
       ctx.fillText(char, col * charW, row * charH + charH);

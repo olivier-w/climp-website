@@ -1,16 +1,17 @@
 import { useRef, useState, useCallback, useEffect } from "react";
 import type { AudioState, AudioControls } from "./types";
 
+const INITIAL_VOLUME = 0.2;
+
 export function useAudioEngine(src: string): AudioState & AudioControls {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const ctxRef = useRef<AudioContext | null>(null);
-  const analyserRef = useRef<AnalyserNode | null>(null);
   const sourceCreated = useRef(false);
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [volume, setVolume] = useState(0.2);
+  const [volume, setVolume] = useState(INITIAL_VOLUME);
   const [repeat, setRepeat] = useState(false);
   const [analyser, setAnalyser] = useState<AnalyserNode | null>(null);
 
@@ -18,7 +19,7 @@ export function useAudioEngine(src: string): AudioState & AudioControls {
     const audio = new Audio(src);
     audio.preload = "metadata";
     audio.crossOrigin = "anonymous";
-    audio.volume = 0.2;
+    audio.volume = INITIAL_VOLUME;
     audioRef.current = audio;
 
     audio.addEventListener("loadedmetadata", () => {
@@ -62,7 +63,6 @@ export function useAudioEngine(src: string): AudioState & AudioControls {
     }
 
     ctxRef.current = ctx;
-    analyserRef.current = analyserNode;
     setAnalyser(analyserNode);
   }, []);
 

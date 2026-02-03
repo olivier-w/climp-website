@@ -1,3 +1,4 @@
+const GRAY = Array.from({ length: 256 }, (_, i) => `rgb(${i},${i},${i})`);
 const MATRIX_CHARS =
   "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
 interface Column {
@@ -97,8 +98,7 @@ export function renderMatrix(
           ctx.fillStyle = "#ffffff";
         }
       } else {
-        const v = Math.floor(40 + fade * 120 + colEnergy * 60);
-        ctx.fillStyle = `rgb(${v},${v},${v})`;
+        ctx.fillStyle = GRAY[Math.min(255, Math.floor(40 + fade * 120 + colEnergy * 60))];
       }
 
       ctx.fillText(char, col * charW, row * charH + charH);

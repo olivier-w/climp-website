@@ -89,6 +89,7 @@ const tabs = [
           const isActive = b.dataset.tab === tabId;
           b.classList.toggle("text-[var(--color-text)]", isActive);
           b.classList.toggle("text-[var(--color-text-faint)]", !isActive);
+          b.classList.toggle("hover:text-[var(--color-text-muted)]", !isActive);
           b.setAttribute("aria-selected", String(isActive));
         });
 
