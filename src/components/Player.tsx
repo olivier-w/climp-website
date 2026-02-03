@@ -55,10 +55,10 @@ export default function Player() {
 
       {/* Song title + artist — like real climp */}
       <div className="mb-6">
-        <div className="text-base font-bold text-[var(--color-text)]">
+        <div className="text-base font-bold text-text">
           Ghost (Kerrigan's Anthem)
         </div>
-        <div className="text-sm text-[var(--color-text-muted)]">
+        <div className="text-sm text-text-muted">
           Maduk ft Veela
         </div>
       </div>
@@ -91,7 +91,7 @@ export default function Player() {
       </div>
 
       {/* Keybinds help — matches real climp, hidden on mobile */}
-      <div className="hidden sm:flex gap-4 text-sm text-[var(--color-text-dim)] select-none">
+      <div className="hidden sm:flex gap-4 text-sm text-text-dim select-none">
         <span>space pause</span>
         <span>←/→ seek</span>
         <span>+/− volume</span>

@@ -29,7 +29,7 @@ export function ProgressBar({ currentTime, duration, onSeek }: Props) {
 
   return (
     <div className="flex items-center gap-3 text-sm select-none">
-      <span className="text-[var(--color-text-dim)] shrink-0 min-w-[3ch]">
+      <span className="text-text-dim shrink-0 min-w-[3ch]">
         {formatTime(currentTime)}
       </span>
       <div
@@ -40,21 +40,21 @@ export function ProgressBar({ currentTime, duration, onSeek }: Props) {
         aria-valuenow={Math.round(currentTime)}
         aria-valuemin={0}
         aria-valuemax={Math.round(duration)}
-        className="flex-1 h-[3px] bg-[var(--color-text-dim)] rounded-full cursor-pointer relative"
+        className="flex-1 h-[3px] bg-text-dim rounded-full cursor-pointer relative"
         onClick={handleClick}
       >
         {/* Filled portion */}
         <div
-          className="absolute inset-y-0 left-0 bg-[var(--color-text)] rounded-full"
+          className="absolute inset-y-0 left-0 bg-text rounded-full"
           style={{ width: `${fraction * 100}%` }}
         />
         {/* Scrubber dot */}
         <div
-          className="absolute top-1/2 -translate-y-1/2 w-[7px] h-[7px] bg-[var(--color-text)] rounded-full"
+          className="absolute top-1/2 -translate-y-1/2 w-[7px] h-[7px] bg-text rounded-full"
           style={{ left: `calc(${fraction * 100}% - 3.5px)` }}
         />
       </div>
-      <span className="text-[var(--color-text-dim)] shrink-0 min-w-[3ch] text-right">
+      <span className="text-text-dim shrink-0 min-w-[3ch] text-right">
         {formatTime(duration)}
       </span>
     </div>

@@ -99,7 +99,7 @@ export function Visualizer({ analyser, mode, isPlaying }: Props) {
       }}
     >
       {prefersReducedMotion.current ? (
-        <div className="w-full h-[7.2rem] flex items-center justify-center text-[var(--color-text-faint)] text-sm">
+        <div className="w-full h-[7.2rem] flex items-center justify-center text-text-faint text-sm">
           [ visualizer paused — reduced motion ]
         </div>
       ) : (
