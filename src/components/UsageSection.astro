@@ -1,17 +1,20 @@
 ---
 const keybindings = [
-  ["space", "pause / play"],
+  ["space", "toggle pause"],
   ["left / h", "seek -5s"],
   ["right / l", "seek +5s"],
-  ["up / k", "volume +5%"],
-  ["down / j", "volume -5%"],
-  ["v", "cycle visualizer"],
+  ["+", "volume +5%"],
+  ["-", "volume -5%"],
+  ["v", "cycle visualizer (vu / spectrum / waveform / braille / dense / matrix / hatching / off)"],
   ["r", "toggle repeat (off / song / playlist)"],
+  ["x", "cycle speed (1x / 2x / 0.5x)"],
+  ["z", "toggle shuffle (playlist)"],
   ["n", "next track"],
   ["N / p", "previous track"],
+  ["j / k", "scroll queue list (playlist)"],
   ["enter", "play selected track"],
-  ["del / backspace", "remove track from queue"],
-  ["s", "save as mp3"],
+  ["del / backspace", "remove selected track (playlist)"],
+  ["s", "save as mp3 (url playback only)"],
   ["q / esc / ctrl+c", "quit"],
 ];
 ---
