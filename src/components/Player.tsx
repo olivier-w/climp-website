@@ -15,9 +15,9 @@ export default function Player() {
   const engine = useAudioEngine("/audio/Maduk ft Veela - Ghost (Kerrigan's Anthem).mp3");
 
   useKeyBindings({
-    ...engine,
-    visualizerMode,
-    setVisualizerMode,
+    togglePlay: engine.togglePlay,
+    seek: engine.seek,
+    adjustVolume: engine.adjustVolume,
     isVisible,
   });
 
@@ -85,11 +85,9 @@ export default function Player() {
 
       {/* Keybinds help — matches real climp, hidden on mobile */}
       <div className="hidden sm:flex gap-4 text-sm text-[var(--color-text-dim)] select-none">
-        <span><kbd className="border border-[var(--color-border)] rounded px-1.5 py-0.5 text-xs">space</kbd> pause</span>
-        <span><kbd className="border border-[var(--color-border)] rounded px-1.5 py-0.5 text-xs">←/→</kbd> seek</span>
-        <span><kbd className="border border-[var(--color-border)] rounded px-1.5 py-0.5 text-xs">↑/↓</kbd> volume</span>
-        <span><kbd className="border border-[var(--color-border)] rounded px-1.5 py-0.5 text-xs">v</kbd> viz</span>
-        <span><kbd className="border border-[var(--color-border)] rounded px-1.5 py-0.5 text-xs">r</kbd> repeat</span>
+        <span>space pause</span>
+        <span>←/→ seek</span>
+        <span>+/− volume</span>
       </div>
 
       {/* Play state for screen readers */}
