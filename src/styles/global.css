@@ -12,7 +12,8 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono",
     Menlo, Consolas, "Liberation Mono", monospace;
   --color-bg: #141414;
-  --color-surface: #1e1e1e;
+  --color-surface: #1a1a1a;
+  --color-surface-hover: #222222;
   --color-border: #2a2a2a;
   --color-text: #e0e0e0;
   --color-text-muted: #a0a0a0;
@@ -37,13 +38,15 @@ body {
 /* Terminal window frame */
 .terminal-window {
   border: 1px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
   background: var(--color-surface);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
   box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.3),
-    0 4px 8px rgba(0, 0, 0, 0.2),
-    0 12px 32px rgba(0, 0, 0, 0.25);
+    0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 8px 16px rgba(0, 0, 0, 0.25),
+    0 24px 48px rgba(0, 0, 0, 0.3);
 }
 
 .terminal-titlebar {
@@ -259,6 +262,11 @@ body {
   }
 }
 
+/* Install pill — sliding tab indicator */
+.install-pill {
+  transition: transform 200ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
 /* Reduced motion — opacity-only fallback, don't remove all animation */
 @media (prefers-reduced-motion: reduce) {
   .like-button {
@@ -276,6 +284,10 @@ body {
   .like-particle {
     animation: none;
     display: none;
+  }
+
+  .install-pill {
+    transition-duration: 0ms;
   }
 
   @keyframes heart-fade {

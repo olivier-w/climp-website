@@ -85,11 +85,11 @@ export default function Player() {
 
       {/* Keybinds help — matches real climp, hidden on mobile */}
       <div className="hidden sm:flex gap-4 text-sm text-[var(--color-text-dim)] select-none">
-        <span><span>space</span> pause</span>
-        <span><span>←/→</span> seek</span>
-        <span><span>↑/↓</span> volume</span>
-        <span><span>v</span> viz</span>
-        <span><span>r</span> repeat</span>
+        <span><kbd className="border border-[var(--color-border)] rounded px-1.5 py-0.5 text-xs">space</kbd> pause</span>
+        <span><kbd className="border border-[var(--color-border)] rounded px-1.5 py-0.5 text-xs">←/→</kbd> seek</span>
+        <span><kbd className="border border-[var(--color-border)] rounded px-1.5 py-0.5 text-xs">↑/↓</kbd> volume</span>
+        <span><kbd className="border border-[var(--color-border)] rounded px-1.5 py-0.5 text-xs">v</kbd> viz</span>
+        <span><kbd className="border border-[var(--color-border)] rounded px-1.5 py-0.5 text-xs">r</kbd> repeat</span>
       </div>
 
       {/* Play state for screen readers */}

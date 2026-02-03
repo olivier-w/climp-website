@@ -1,27 +1,4 @@
 ---
-const demos = [
-  {
-    label: "file browser",
-    description: "run climp with no arguments to browse and play local files.",
-    gif: "/demo/browser.gif",
-  },
-  {
-    label: "url playback",
-    description: "play from a URL (YouTube, SoundCloud, etc). requires yt-dlp. press s to save as mp3.",
-    gif: "/demo/url-fixed.gif",
-  },
-  {
-    label: "visualizer",
-    description: "press v to cycle through visualizers: vu, spectrum, waveform, braille, dense, matrix, hatching.",
-    gif: "/demo/visualizer.gif",
-  },
-  {
-    label: "playlists",
-    description: "local directories and YouTube playlists. use n/p to skip tracks, j/k to scroll the queue.",
-    gif: "/demo/playlist.gif",
-  },
-];
-
 const keybindings = [
   ["space", "pause / play"],
   ["left / h", "seek -5s"],
@@ -39,10 +16,10 @@ const keybindings = [
 ];
 ---
 
-<div class="space-y-6">
+<div class="space-y-10">
   {/* Usage commands */}
   <div>
-    <h2 class="text-xs text-[var(--color-accent)] mb-2">usage</h2>
+    <h2 class="text-xs text-[var(--color-accent)] mb-3 text-balance">usage</h2>
     <div class="bg-[var(--color-bg)] border border-[var(--color-border)] rounded-lg overflow-hidden">
       <pre class="px-4 py-3 text-xs text-[var(--color-text-muted)] overflow-x-auto"><code>climp                 # open interactive file browser
 climp song.mp3        # play a local file (+ directory playlist)
@@ -51,27 +28,9 @@ climp &lt;playlist-url&gt;  # play a YouTube playlist</code></pre>
     </div>
   </div>
 
-  {/* Demos */}
-  <div class="space-y-4">
-    {demos.map((demo) => (
-      <div>
-        <h3 class="text-xs text-[var(--color-accent)] mb-1">{demo.label}</h3>
-        <p class="text-xs text-[var(--color-text-faint)] mb-2">{demo.description}</p>
-        <div class="border border-[var(--color-border)] rounded-lg overflow-hidden">
-          <img
-            src={demo.gif}
-            alt={`${demo.label} demo`}
-            class="w-full block"
-            loading="lazy"
-          />
-        </div>
-      </div>
-    ))}
-  </div>
-
   {/* Keybindings */}
   <div>
-    <h2 class="text-xs text-[var(--color-accent)] mb-2">keybindings</h2>
+    <h2 class="text-xs text-[var(--color-accent)] mb-3 text-balance">keybindings</h2>
     <div class="bg-[var(--color-bg)] border border-[var(--color-border)] rounded-lg overflow-hidden">
       <table class="w-full text-xs">
         <tbody>

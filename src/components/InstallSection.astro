@@ -19,34 +19,33 @@ const tabs = [
 ---
 
 <div id="install" class="install-tabs" data-tabs>
-  {/* Tab buttons */}
-  <div class="flex justify-center gap-0 border-b border-transparent">
+  {/* Tab buttons — segmented pill control */}
+  <div class="relative flex bg-[var(--color-surface)] rounded-lg p-0.5" role="tablist">
+    <span
+      class="install-pill absolute top-0.5 bottom-0.5 left-0.5 rounded-md bg-[var(--color-surface-hover)]"
+      data-pill
+      style={`width: calc(${100 / tabs.length}% - 2px);`}
+    />
     {tabs.map((tab, i) => (
       <button
         class:list={[
-          "tab-btn px-3 py-1.5 text-xs transition-colors relative",
+          "tab-btn relative flex-1 px-3 py-2 text-xs transition-colors z-[1]",
           i === 0
-            ? "text-[var(--color-accent)]"
+            ? "text-[var(--color-text)]"
             : "text-[var(--color-text-faint)] hover:text-[var(--color-text-muted)]",
         ]}
         data-tab={tab.id}
+        data-index={i}
         aria-selected={i === 0 ? "true" : "false"}
         role="tab"
       >
         {tab.label}
-        <span
-          class:list={[
-            "absolute bottom-0 left-0 right-0 h-px bg-[var(--color-accent)] transition-opacity",
-            i === 0 ? "opacity-100" : "opacity-0",
-          ]}
-          data-indicator
-        />
       </button>
     ))}
   </div>
 
   {/* Tab panels — grid overlay so tallest panel sets the height */}
-  <div class="grid min-w-0">
+  <div class="grid min-w-0 mt-2">
     {tabs.map((tab, i) => (
       <div
         class:list={[
@@ -56,10 +55,10 @@ const tabs = [
         data-panel={tab.id}
         role="tabpanel"
       >
-        <div class="relative bg-[var(--color-bg)] border border-[var(--color-border)] border-t-1 rounded-lg overflow-hidden">
-          <pre class="px-4 py-3 text-xs text-[var(--color-text-muted)] overflow-x-auto"><code>{tab.code}</code></pre>
+        <div class="relative bg-[var(--color-bg)] border border-[var(--color-border)] rounded-lg overflow-hidden">
+          <pre class="px-4 py-3.5 text-xs text-[var(--color-text-muted)] overflow-x-auto"><code>{tab.code}</code></pre>
           <button
-            class="copy-btn absolute top-2 right-2 text-xs text-[var(--color-text-faint)] hover:text-[var(--color-accent)] transition-colors px-2 py-0.5"
+            class="copy-btn absolute top-2 right-2 text-xs text-[var(--color-text-faint)] hover:text-[var(--color-accent)] transition-colors px-2.5 py-1 border border-transparent hover:border-[var(--color-border)] rounded"
             data-code={tab.code}
           >
             copy
@@ -74,21 +73,23 @@ const tabs = [
   document.querySelectorAll("[data-tabs]").forEach((container) => {
     const buttons = container.querySelectorAll<HTMLButtonElement>("[data-tab]");
     const panels = container.querySelectorAll<HTMLElement>("[data-panel]");
+    const pill = container.querySelector<HTMLElement>("[data-pill]");
 
     buttons.forEach((btn) => {
       btn.addEventListener("click", () => {
         const tabId = btn.dataset.tab!;
+        const index = Number(btn.dataset.index);
+
+        // Slide pill to active tab
+        if (pill) {
+          pill.style.transform = `translateX(${index * 100}%)`;
+        }
 
         buttons.forEach((b) => {
           const isActive = b.dataset.tab === tabId;
-          b.classList.toggle("text-[var(--color-accent)]", isActive);
+          b.classList.toggle("text-[var(--color-text)]", isActive);
           b.classList.toggle("text-[var(--color-text-faint)]", !isActive);
           b.setAttribute("aria-selected", String(isActive));
-          const indicator = b.querySelector("[data-indicator]") as HTMLElement;
-          if (indicator) {
-            indicator.classList.toggle("opacity-100", isActive);
-            indicator.classList.toggle("opacity-0", !isActive);
-          }
         });
 
         panels.forEach((p) => {
