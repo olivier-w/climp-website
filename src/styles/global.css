@@ -117,23 +117,17 @@ body {
 
 /* Title link */
 .climp-title {
-  position: relative;
   color: var(--color-text);
   text-decoration: none;
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color 0.2s ease;
+  text-decoration-color: transparent;
 }
 
-.climp-title::after {
-  content: "↗";
-  position: absolute;
-  left: calc(100% + 0.3em);
-  top: 0;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.climp-title:hover::after,
-.climp-title:focus-visible::after {
-  opacity: 1;
+.climp-title:hover,
+.climp-title:focus-visible {
+  text-decoration: underline;
+  text-decoration-color: var(--color-text-muted);
 }
 
 .climp-title:focus-visible {

@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { ConvexProvider, ConvexReactClient, useQuery, useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
 
@@ -9,9 +9,13 @@ const PARTICLE_COUNT = 6;
 function LikeButtonInner() {
   const count = useQuery(api.likes.get);
   const increment = useMutation(api.likes.increment);
-  const [liked, setLiked] = useState(() =>
-    typeof window !== "undefined" && localStorage.getItem("climp-liked") === "1"
-  );
+  const [liked, setLiked] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("climp-liked") === "1") {
+      setLiked(true);
+    }
+  }, []);
   const [animating, setAnimating] = useState(false);
   const [particles, setParticles] = useState<number[]>([]);
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>(null);
