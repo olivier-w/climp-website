@@ -37,16 +37,23 @@ try {
     <div class="w-full max-w-[600px]">
       <div class="terminal-window">
         <div class="terminal-titlebar">
-          <div class="terminal-dots">
-            <span class="terminal-dot terminal-dot--close"></span>
-            <span class="terminal-dot terminal-dot--minimize"></span>
-            <span class="terminal-dot terminal-dot--maximize"></span>
-          </div>
           <span class="terminal-title">climp</span>
-          <div class="terminal-dots invisible">
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
+          <div class="terminal-controls">
+            <button class="terminal-control" aria-label="Minimize">
+              <svg width="10" height="1" viewBox="0 0 10 1" fill="currentColor">
+                <rect width="10" height="1"/>
+              </svg>
+            </button>
+            <button class="terminal-control" aria-label="Maximize">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor">
+                <rect x="0.5" y="0.5" width="9" height="9"/>
+              </svg>
+            </button>
+            <button class="terminal-control terminal-control--close" aria-label="Close">
+              <svg width="10" height="10" viewBox="0 0 10 10" stroke="currentColor">
+                <path d="M0 0L10 10M10 0L0 10"/>
+              </svg>
+            </button>
           </div>
         </div>
         <div class="terminal-body">
