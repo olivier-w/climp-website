@@ -14,7 +14,7 @@ export default function Player() {
 
   const engine = useAudioEngine("/audio/Maduk ft Veela - Ghost (Kerrigan's Anthem).mp3");
 
-  const VISUALIZER_MODES: VisualizerMode[] = ["off", "spectrum", "waveform", "braille", "matrix"];
+  const VISUALIZER_MODES: VisualizerMode[] = ["off", "spectrum", "waterfall", "waveform", "lissajous", "braille", "matrix"];
 
   const toggleVisualizer = useCallback(() => {
     setVisualizerMode((prev) => {

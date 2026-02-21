@@ -1,4 +1,4 @@
-export type VisualizerMode = "spectrum" | "waveform" | "braille" | "matrix" | "off";
+export type VisualizerMode = "spectrum" | "waterfall" | "waveform" | "lissajous" | "braille" | "matrix" | "off";
 
 export interface AudioState {
   isPlaying: boolean;
