@@ -21,7 +21,7 @@ export function useKeyBindings({
     if (!isVisible) return;
 
     function handleKeyDown(e: KeyboardEvent) {
-      // Ignore if typing in an input
+      // Ignore if typing in an input.
       if (
         e.target instanceof HTMLInputElement ||
         e.target instanceof HTMLTextAreaElement
@@ -35,9 +35,15 @@ export function useKeyBindings({
           togglePlay();
           break;
         case "ArrowLeft":
+        case "h":
+        case "H":
+          e.preventDefault();
           seek(-5);
           break;
         case "ArrowRight":
+        case "l":
+        case "L":
+          e.preventDefault();
           seek(5);
           break;
         case "+":

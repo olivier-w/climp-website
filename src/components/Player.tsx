@@ -32,7 +32,7 @@ export default function Player() {
     isVisible,
   });
 
-  // Intersection observer for key bindings
+  // Intersection observer for key bindings.
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
@@ -53,7 +53,7 @@ export default function Player() {
       onClick={engine.togglePlay}
     >
 
-      {/* Song title + artist — like real climp */}
+      {/* Song title + artist like real climp. */}
       <div className="mb-6">
         <div className="text-base font-bold text-text">
           Ghost (Kerrigan's Anthem)
@@ -63,7 +63,7 @@ export default function Player() {
         </div>
       </div>
 
-      {/* Visualizer — compact */}
+      {/* Visualizer (compact). */}
       <div className={`transition-[margin] duration-300 ease-in-out ${visualizerMode === "off" ? "mb-0" : "mb-4"}`}>
         <Visualizer
           analyser={engine.analyser}
@@ -72,7 +72,7 @@ export default function Player() {
         />
       </div>
 
-      {/* Progress bar */}
+      {/* Progress bar. */}
       <div className="mb-2">
         <ProgressBar
           currentTime={engine.currentTime}
@@ -81,7 +81,7 @@ export default function Player() {
         />
       </div>
 
-      {/* Controls */}
+      {/* Controls. */}
       <div className="mb-0 sm:mb-4">
         <Controls
           isPlaying={engine.isPlaying}
@@ -90,14 +90,16 @@ export default function Player() {
         />
       </div>
 
-      {/* Keybinds help — matches real climp, hidden on mobile */}
-      <div className="hidden sm:flex gap-4 text-sm text-text-dim select-none">
+      {/* Demo key help (hidden on mobile). */}
+      <div className="hidden sm:flex flex-wrap gap-4 text-sm text-text-dim select-none">
         <span>space pause</span>
-        <span>←/→ seek</span>
-        <span>+/− volume</span>
+        <span>left/right or h/l seek</span>
+        <span>+/- volume</span>
+        <span>v visualizer</span>
+        <span>r repeat</span>
       </div>
 
-      {/* Play state for screen readers */}
+      {/* Play state for screen readers. */}
       <div aria-live="polite" className="sr-only">
         {engine.isPlaying ? "Playing" : "Paused"}
       </div>

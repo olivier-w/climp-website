@@ -3,18 +3,19 @@ const keybindings = [
   ["space", "toggle pause"],
   ["left / h", "seek -5s"],
   ["right / l", "seek +5s"],
-  ["+", "volume +5%"],
+  ["+ / =", "volume +5%"],
   ["-", "volume -5%"],
-  ["v", "cycle visualizer (vu / spectrum / waterfall / waveform / lissajous / braille / dense / matrix / hatching / off)"],
-  ["r", "toggle repeat (off / song / playlist)"],
-  ["x", "cycle speed (1x / 2x / 0.5x)"],
-  ["z", "toggle shuffle (playlist)"],
+  ["v", "cycle visualizer modes"],
+  ["r", "cycle repeat mode"],
+  ["x", "cycle speed"],
+  ["z", "toggle shuffle"],
   ["n", "next track"],
   ["N / p", "previous track"],
-  ["up / down", "scroll queue list (playlist)"],
+  ["up / down / j / k", "move queue selection"],
   ["enter", "play selected track"],
-  ["del / backspace", "remove selected track (playlist)"],
-  ["s", "save as mp3 (url playback only)"],
+  ["del / backspace", "remove selected track"],
+  ["s", "save as MP3"],
+  ["?", "toggle help"],
   ["q / esc / ctrl+c", "quit"],
 ];
 ---
@@ -28,15 +29,15 @@ const keybindings = [
         <tbody>
           <tr>
             <td class="px-4 py-1.5 text-center border-r border-border">
-              <span class="text-green-500">✓</span>
+              <span class="text-green-500">&#10003;</span>
               <span class="text-text-muted ml-2">windows</span>
             </td>
             <td class="px-4 py-1.5 text-center border-r border-border">
-              <span class="text-green-500">✓</span>
+              <span class="text-green-500">&#10003;</span>
               <span class="text-text-muted ml-2">macos</span>
             </td>
             <td class="px-4 py-1.5 text-center">
-              <span class="text-green-500">✓</span>
+              <span class="text-green-500">&#10003;</span>
               <span class="text-text-muted ml-2">linux</span>
             </td>
           </tr>
@@ -60,16 +61,16 @@ const keybindings = [
             <td class="px-4 py-1.5 text-text-muted">play local file (+ directory playlist)</td>
           </tr>
           <tr class="border-b border-border">
-            <td class="px-4 py-1.5 text-text whitespace-nowrap w-1/3">climp playlist.m3u</td>
+            <td class="px-4 py-1.5 text-text whitespace-nowrap w-1/3">climp my-playlist.m3u</td>
             <td class="px-4 py-1.5 text-text-muted">play local playlist file (.m3u, .m3u8, .pls)</td>
           </tr>
           <tr class="border-b border-border">
             <td class="px-4 py-1.5 text-text whitespace-nowrap w-1/3">climp &lt;url&gt;</td>
-            <td class="px-4 py-1.5 text-text-muted">play from URL (YouTube, radio streams, etc)</td>
+            <td class="px-4 py-1.5 text-text-muted">play from URL (YouTube, streams, etc)</td>
           </tr>
           <tr class="border-b border-border last:border-b-0">
             <td class="px-4 py-1.5 text-text whitespace-nowrap w-1/3">climp &lt;playlist-url&gt;</td>
-            <td class="px-4 py-1.5 text-text-muted">play YouTube or SoundCloud playlist</td>
+            <td class="px-4 py-1.5 text-text-muted">play playlist or radio URL</td>
           </tr>
         </tbody>
       </table>
