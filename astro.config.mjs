@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import vercel from "@astrojs/vercel";
 export default defineConfig({
   site: "https://climp.net",
+  trailingSlash: "never",
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],

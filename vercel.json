@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.climp.net"
+        }
+      ],
+      "destination": "https://climp.net/:path*",
+      "permanent": true
+    }
+  ]
+}
