@@ -142,16 +142,10 @@ body {
 
 /* GitHub stars badge */
 .github-stars-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  min-height: 44px;
-  padding: 0.25rem 0;
-  color: var(--color-text-dim);
+  color: var(--color-text-faint);
   text-decoration: none;
   white-space: nowrap;
-  font-size: 0.75rem;
-  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
   transition: color 200ms ease-out;
 }
 
@@ -162,41 +156,8 @@ body {
 
 .github-stars-badge:focus-visible {
   outline: 1px solid var(--color-text-dim);
-  outline-offset: 4px;
+  outline-offset: 2px;
   border-radius: 2px;
-}
-
-.github-stars-badge__star {
-  font-size: 0.625rem;
-  opacity: 0.6;
-  transition: opacity 200ms ease-out;
-}
-
-.github-stars-badge:hover .github-stars-badge__star {
-  opacity: 1;
-}
-
-.github-stars-badge__count {
-  color: var(--color-text-muted);
-  font-variant-numeric: tabular-nums;
-  transition: color 200ms ease-out;
-}
-
-.github-stars-badge:hover .github-stars-badge__count {
-  color: var(--color-text);
-}
-
-.github-stars-badge__sep {
-  opacity: 0.3;
-}
-
-.github-stars-badge__label {
-  opacity: 0.7;
-  transition: opacity 200ms ease-out;
-}
-
-.github-stars-badge:hover .github-stars-badge__label {
-  opacity: 1;
 }
 
 /* Like button */

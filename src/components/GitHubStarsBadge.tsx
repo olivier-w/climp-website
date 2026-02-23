@@ -52,9 +52,9 @@ export default function GitHubStarsBadge({ initialStars = null }: GitHubStarsBad
     };
   }, []);
 
-  const accessibleLabel = stars !== null
-    ? `View climp on GitHub (${formatStars(stars)} stars)`
-    : "View climp on GitHub";
+  if (stars === null) return null;
+
+  const accessibleLabel = `View climp on GitHub (${formatStars(stars)} stars)`;
 
   return (
     <a
@@ -64,10 +64,7 @@ export default function GitHubStarsBadge({ initialStars = null }: GitHubStarsBad
       className="github-stars-badge"
       aria-label={accessibleLabel}
     >
-      <span className="github-stars-badge__star" aria-hidden="true">&#9733;</span>
-      <span className="github-stars-badge__count">{stars !== null ? formatStars(stars) : "..."}</span>
-      <span className="github-stars-badge__sep" aria-hidden="true">&middot;</span>
-      <span className="github-stars-badge__label">GitHub</span>
+      {formatStars(stars)} &#9733;
     </a>
   );
 }

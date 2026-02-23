@@ -91,9 +91,9 @@ export default function Player() {
       </div>
 
       {/* Demo key help (hidden on mobile). */}
-      <div className="hidden sm:flex flex-wrap gap-4 text-sm text-text-dim select-none">
+      <div className="hidden sm:flex flex-wrap gap-6 text-sm text-text-dim select-none">
         <span>space play</span>
-        <span>h/l seek</span>
+        <span>←/→ seek</span>
         <span>+/- vol</span>
         <span>v viz</span>
         <span>r repeat</span>
