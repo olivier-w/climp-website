@@ -14,7 +14,7 @@ export default function Player() {
 
   const engine = useAudioEngine("/audio/Maduk ft Veela - Ghost (Kerrigan's Anthem).mp3");
 
-  const VISUALIZER_MODES: VisualizerMode[] = ["off", "spectrum", "waterfall", "waveform", "lissajous", "braille", "matrix"];
+  const VISUALIZER_MODES: VisualizerMode[] = ["off", "spectrum", "waveform", "braille", "matrix"];
 
   const toggleVisualizer = useCallback(() => {
     setVisualizerMode((prev) => {
@@ -92,10 +92,10 @@ export default function Player() {
 
       {/* Demo key help (hidden on mobile). */}
       <div className="hidden sm:flex flex-wrap gap-4 text-sm text-text-dim select-none">
-        <span>space pause</span>
-        <span>left/right or h/l seek</span>
-        <span>+/- volume</span>
-        <span>v visualizer</span>
+        <span>space play</span>
+        <span>h/l seek</span>
+        <span>+/- vol</span>
+        <span>v viz</span>
         <span>r repeat</span>
       </div>
 

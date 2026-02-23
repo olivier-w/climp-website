@@ -1,9 +1,7 @@
 import { useRef, useEffect, useCallback } from "react";
 import type { VisualizerMode } from "./types";
 import { renderSpectrum } from "./visualizers/spectrum";
-import { renderWaterfall } from "./visualizers/waterfall";
 import { renderWaveform } from "./visualizers/waveform";
-import { renderLissajous } from "./visualizers/lissajous";
 import { renderBraille } from "./visualizers/braille";
 import { renderMatrix } from "./visualizers/matrix";
 
@@ -15,9 +13,7 @@ interface Props {
 
 const RENDERERS = {
   spectrum: renderSpectrum,
-  waterfall: renderWaterfall,
   waveform: renderWaveform,
-  lissajous: renderLissajous,
   braille: renderBraille,
   matrix: renderMatrix,
 } as const;
