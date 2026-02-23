@@ -1,8 +1,13 @@
 ---
 const tabs = [
   {
+    id: "eget",
+    label: "eget",
+    code: "eget olivier-w/climp",
+  },
+  {
     id: "go",
-    label: "go install",
+    label: "go",
     code: "go install github.com/olivier-w/climp@latest",
   },
   {
@@ -24,7 +29,7 @@ const tabs = [
     <span
       class="install-pill absolute top-0.5 bottom-0.5 left-0.5 rounded-md bg-surface-hover"
       data-pill
-      style={`width: calc(${100 / tabs.length}% - 2px);`}
+      style={`width: calc(${100 / tabs.length}% - ${4 / tabs.length}px);`}
     />
     {tabs.map((tab, i) => (
       <button
