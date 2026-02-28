@@ -1,8 +1,8 @@
 ---
 const keybindings = [
   ["space", "toggle pause"],
-  ["← / h", "seek -5s"],
-  ["→ / l", "seek +5s"],
+  ["left / h", "seek -5s (not for live streams)"],
+  ["right / l", "seek +5s (not for live streams)"],
   ["+ / =", "volume +5%"],
   ["-", "volume -5%"],
   ["v", "cycle visualizer modes"],
@@ -14,8 +14,8 @@ const keybindings = [
   ["up / down / j / k", "move queue selection"],
   ["enter", "play selected track"],
   ["del / backspace", "remove selected track"],
-  ["s", "save as MP3"],
-  ["?", "toggle help"],
+  ["s", "save downloaded URL track as MP3"],
+  ["?", "toggle expanded help"],
   ["q / esc / ctrl+c", "quit"],
 ];
 ---
@@ -46,6 +46,25 @@ const keybindings = [
     </div>
   </div>
 
+  {/* Format support */}
+  <div>
+    <h2 class="text-xs text-accent mb-3 text-balance">formats</h2>
+    <div class="bg-bg border border-border rounded-lg overflow-hidden">
+      <table class="w-full text-xs">
+        <tbody>
+          <tr class="border-b border-border">
+            <td class="px-4 py-1.5 text-text whitespace-nowrap w-1/3">audio</td>
+            <td class="px-4 py-1.5 text-text-muted">.mp3, .wav, .flac, .ogg, .aac, .m4a, .m4b</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-1.5 text-text whitespace-nowrap w-1/3">playlists</td>
+            <td class="px-4 py-1.5 text-text-muted">.m3u, .m3u8, .pls</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
   {/* Usage commands */}
   <div>
     <h2 class="text-xs text-accent mb-3 text-balance">usage</h2>
@@ -62,13 +81,13 @@ const keybindings = [
           </tr>
           <tr class="border-b border-border">
             <td class="px-4 py-1.5 text-text whitespace-nowrap w-1/3">climp my-playlist.m3u</td>
-            <td class="px-4 py-1.5 text-text-muted">play local playlist file (.m3u, .m3u8, .pls)</td>
+            <td class="px-4 py-1.5 text-text-muted">play local playlist file</td>
           </tr>
           <tr class="border-b border-border">
             <td class="px-4 py-1.5 text-text whitespace-nowrap w-1/3">climp &lt;url&gt;</td>
-            <td class="px-4 py-1.5 text-text-muted">play from URL (YouTube, streams, etc)</td>
+            <td class="px-4 py-1.5 text-text-muted">play from URL (YouTube, SoundCloud, etc)</td>
           </tr>
-          <tr class="border-b border-border last:border-b-0">
+          <tr class="border-b border-border">
             <td class="px-4 py-1.5 text-text whitespace-nowrap w-1/3">climp &lt;playlist-url&gt;</td>
             <td class="px-4 py-1.5 text-text-muted">play playlist or radio URL</td>
           </tr>

@@ -107,7 +107,7 @@ export const GET: APIRoute = async () => {
                     opacity: 0.5,
                     marginTop: "20px",
                   },
-                  children: "a minimal cli media player",
+                  children: "local files | urls | playlists",
                 },
               },
               {

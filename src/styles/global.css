@@ -140,6 +140,12 @@ body {
   outline: none;
 }
 
+.hero-version {
+  display: inline-block;
+  min-width: 7ch;
+  font-variant-numeric: tabular-nums;
+}
+
 /* GitHub stars badge */
 .github-stars-badge {
   color: var(--color-text-faint);
